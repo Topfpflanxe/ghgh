@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,
+initial-scale=1,
+maximum-scale=1,
+user-scalable=no,
+viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#03040b">
+
+<title>40 Jahre · Für Mama ♡</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="phone-area">
+
+<div class="phone">
+
+<div class="app" id="app">
+
+
+<!-- =====================================================
+INTRO
+===================================================== -->
+
+<section
+    id="intro"
+    class="page"
+>
+
+    <div class="bg">
+
+        <div
+            class="stars"
+            id="stars"
+        ></div>
+
+        <div class="glow one"></div>
+        <div class="glow two"></div>
+
+    </div>
+
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            HEUTE IST EIN GANZ BESONDERER TAG
+        </div>
+
+        <div class="intro-number">
+            40
+        </div>
+
+        <div class="intro-title">
+            Jahre voller Geschichten.
+        </div>
+
+        <div class="intro-sub">
+            Und die schönste Geschichte<br>
+            ist noch lange nicht vorbei. ♡
+        </div>
+
+        <button
+            class="start"
+            onclick="openPassword()"
+        >
+            DEINE REISE BEGINNT HIER
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+PASSWORT
+===================================================== -->
+
+<section
+    id="passwordPage"
+    class="page hidden"
+>
+
+    <div>
+
+        <div class="lock">
+            ♡
+        </div>
+
+        <div class="password-title">
+            Nur für dich.
+        </div>
+
+        <div class="password-sub">
+            Eine kleine Überraschung wartet auf dich.<br>
+            Aber vorher brauchen wir ein kleines Geheimnis.
+        </div>
+
+        <input
+            id="pass"
+            class="pass"
+            type="password"
+            maxlength="12"
+            inputmode="text"
+            autocomplete="off"
+            placeholder="PASSWORT"
+        >
+
+        <button
+            class="unlock"
+            onclick="unlock()"
+        >
+            ÖFFNEN
+        </button>
+
+        <div
+            id="error"
+            class="error"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+HOME
+===================================================== -->
+
+<section
+    id="home"
+    class="page hidden"
+>
+
+    <div class="bg">
+
+        <div
+            class="stars"
+            id="starsHome"
+        ></div>
+
+        <div class="glow one"></div>
+        <div class="glow two"></div>
+
+    </div>
+
+
+    <div class="top-label">
+        EIN KLEINES UNIVERSUM NUR FÜR DICH
+    </div>
+
+
+    <div class="home-title">
+
+        <div class="small">
+            HAPPY BIRTHDAY
+        </div>
+
+        <h1>
+            40.
+        </h1>
+
+        <div
+            class="small"
+            style="margin-top:7px;"
+        >
+            JAHRE
+        </div>
+
+        <p>
+            40 Jahre.<br>
+            14.610 Tage.<br>
+            Unzählige Erinnerungen.<br>
+            Und noch so viel mehr vor dir.
+        </p>
+
+    </div>
+
+
+    <div class="menu">
+
+        <div
+            class="menu-card"
+            onclick="go('about')"
+        >
+
+            <div class="menu-icon">
+                ♡
+            </div>
+
+            <h3>
+                Etwas von mir
+            </h3>
+
+            <p>
+                Ein paar Worte,
+                die ich dir schon lange sagen wollte.
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="go('timeline')"
+        >
+
+            <div class="menu-icon">
+                ✦
+            </div>
+
+            <h3>
+                Deine Zeitreise
+            </h3>
+
+            <p>
+                40 Jahre. Ein paar davon in Erinnerungen.
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="go('gallery')"
+        >
+
+            <div class="menu-icon">
+                ▧
+            </div>
+
+            <h3>
+                Unsere Galerie
+            </h3>
+
+            <p>
+                Momente, die man niemals vergessen möchte.
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="go('secret')"
+        >
+
+            <div class="menu-icon">
+                ✉
+            </div>
+
+            <h3>
+                Geheime Nachrichten
+            </h3>
+
+            <p>
+                Ein paar kleine Überraschungen für dich.
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+
+        <div
+            class="menu-card"
+            onclick="go('video')"
+        >
+
+            <div class="menu-icon">
+                ▶
+            </div>
+
+            <h3>
+                Nur für dich
+            </h3>
+
+            <p>
+                Da ist noch etwas,
+                das du sehen solltest.
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="page hidden"
+>
+
+    <button
+        class="back-button"
+        onclick="go('home')"
+        aria-label="Zurück zur Startseite"
+    >
+        <span class="back-arrow">‹</span>
+        <span>STARTSEITE</span>
+    </button>
+
+
+    <div class="bg">
+        <div class="glow one"></div>
+    </div>
+
+    <div class="chapter">
+        KAPITEL 01 · VON HERZEN
+    </div>
+
+    <div class="about-title">
+        Etwas,<br>
+        das ich dir
+        <span>
+            sagen möchte.
+        </span>
+    </div>
+
+    <div class="about-text light-text">
+
+        Liebe Mama,
+        <br><br>
+
+        40 Jahre sind nicht einfach nur eine Zahl.
+        Sie sind 40 Jahre voller kleiner und großer
+        Geschichten. Voller Lachen, Tränen, Abenteuer,
+        verrückter Momente und Erinnerungen, die man
+        niemals zurückholen kann.
+
+        <br><br>
+
+        Und wenn ich an all diese Jahre denke,
+        dann denke ich vor allem an eines:
+
+        <br>
+
+        <span style="color:#eda5df;">
+            Danke.
+        </span>
+
+        <br><br>
+
+        Danke, dass du immer da bist.
+        Danke für jedes Gespräch, jedes Lachen,
+        jeden Rat und auch für die Momente,
+        in denen du einfach nur da warst.
+
+        <br><br>
+
+        Ich hoffe, dass die nächsten 40 Jahre
+        mindestens genauso wunderschön werden
+        wie die ersten.
+
+    </div>
+
+
+    <div class="signature">
+        Ich hab dich lieb. ♡
+    </div>
+
+
+    <div class="quote">
+        „Manche Menschen machen einen Raum heller,
+        sobald sie ihn betreten.“
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+TIMELINE
+===================================================== -->
+
+<section
+    id="timeline"
+    class="page hidden"
+>
+
+    <button
+        class="back-button"
+        onclick="go('home')"
+        aria-label="Zurück zur Startseite"
+    >
+        <span class="back-arrow">‹</span>
+        <span>STARTSEITE</span>
+    </button>
+
+
+    <div class="timeline-title">
+
+        <h2>
+            Deine Zeitreise
+        </h2>
+
+        <p>
+            Ein paar Kapitel aus einer
+            ziemlich schönen Geschichte.
+        </p>
+
+    </div>
+
+
+    <div class="timeline-line">
+
+
+        <!-- 1986 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '1986',
+                'Geburt',
+                'Der erste Moment einer Geschichte, die noch gar nicht wusste, wie viele schöne Kapitel vor ihr liegen. ✨',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        1986
+                    </div>
+
+                    <h3>
+                        Geburt
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 1990er -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '1990er',
+                '90er',
+                'Eine Zeit voller kleiner Abenteuer, großer Erinnerungen und Momente, die heute noch ein Lächeln verdienen. 💕',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        1990er
+                    </div>
+
+                    <h3>
+                        90er
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2001 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2001',
+                'Konfirmation',
+                'Ein besonderer Moment und ein weiteres Kapitel auf dem Weg durch diese wunderschöne Geschichte. ✨',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2001
+                    </div>
+
+                    <h3>
+                        Konfirmation
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2000er -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2000er',
+                '2000er',
+                'Neue Wege, neue Erinnerungen und ganz viele Geschichten, die langsam zu dem wurden, was heute Familie bedeutet. ✨',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2000er
+                    </div>
+
+                    <h3>
+                        2000er
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2009 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2009',
+                'Luca',
+                'Ein neues Kapitel begann – und plötzlich war da jemand, der diese Geschichte für immer mitgeschrieben hat. ❤️',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2009
+                    </div>
+
+                    <h3>
+                        Luca
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2010 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2010',
+                'Hochzeit',
+                'Zwei Menschen, ein Versprechen und ein Tag, aus dem ein ganzes gemeinsames Kapitel wurde. 💍❤️',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2010
+                    </div>
+
+                    <h3>
+                        Hochzeit
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2010er -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2010er',
+                '2010er',
+                'Familie, Alltag, Lachen, Chaos und unzählige Momente, die man erst später als unbezahlbar erkennt. 🫶',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2010er
+                    </div>
+
+                    <h3>
+                        2010er
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2012 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2012',
+                'Nic',
+                'Noch ein kleines Kapitel, das die Geschichte größer, bunter und schöner gemacht hat. ❤️',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2012
+                    </div>
+
+                    <h3>
+                        Nic
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2019 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2019',
+                'Fynn',
+                'Und wieder wurde die Familie ein Stück größer – ein weiterer Mensch, der diese Geschichte einzigartig macht. ❤️',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2019
+                    </div>
+
+                    <h3>
+                        Fynn
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2020er -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2020er',
+                '2020er',
+                'Neue Abenteuer, neue Erinnerungen – und noch längst nicht das letzte Kapitel. ✨',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    FOTO
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2020er
+                    </div>
+
+                    <h3>
+                        2020er
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2026 -->
+
+        <div
+            class="event"
+            onclick="openMemory(
+                '2026',
+                'Dieses Jahr',
+                'Und dann sind wir hier. 2026 – nicht nur ein weiteres Jahr, sondern das Kapitel, das gerade erst geschrieben wird. ❤️✨',
+                this.querySelector('.event-img')
+            )"
+        >
+
+            <div class="dot"></div>
+
+            <div class="event-card">
+
+                <div class="event-img">
+                    <img
+                        src="assets/images/timeline/2026.jpeg"
+                        alt="Dieses Jahr"
+                        class="timeline-image"
+                        onerror="if(this.src.endsWith('2026.jpeg')){this.src='assets/images/timeline/2026.jpg';}else if(this.src.endsWith('2026.jpg')){this.src='assets/images/timeline/2026.png';}else if(this.src.endsWith('2026.png')){this.src='assets/images/timeline/2026.webp';}else{this.parentElement.textContent='FOTO';}"
+                    >
+                </div>
+
+                <div class="event-info">
+
+                    <div class="year">
+                        2026
+                    </div>
+
+                    <h3>
+                        Dieses Jahr
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+GALERIE
+===================================================== -->
+
+<section
+    id="gallery"
+    class="page hidden"
+>
+
+    <button
+        class="back-button"
+        onclick="go('home')"
+        aria-label="Zurück zur Startseite"
+    >
+        <span class="back-arrow">‹</span>
+        <span>STARTSEITE</span>
+    </button>
+
+
+    <div class="gallery-head">
+
+        <h2>
+            Erinnerungen.
+        </h2>
+
+        <p>
+            Die besten Momente verdienen einen Platz.
+        </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+        <div
+            class="photo"
+            onclick="message('Hier kommt später eure Geschichte zu diesem Foto. ❤️')"
+        >
+            FOTO 01
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Weißt du noch, was an diesem Tag passiert ist? ✨')"
+        >
+            FOTO 02
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Ein kleiner Moment. Eine große Erinnerung. ❤️')"
+        >
+            FOTO 03
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Davon brauchen wir definitiv noch mehr. 😂❤️')"
+        >
+            FOTO 04
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Genau solche Momente bleiben. Für immer.')"
+        >
+            FOTO 05
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Und das hier ist erst der Anfang...')"
+        >
+            FOTO 06
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Ein weiterer Lieblingsmoment. ❤️')"
+        >
+            FOTO 07
+        </div>
+
+        <div
+            class="photo"
+            onclick="message('Noch eine Geschichte, die erzählt werden muss.')"
+        >
+            FOTO 08
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+GEHEIME NACHRICHTEN
+===================================================== -->
+
+<section
+    id="secret"
+    class="page hidden"
+>
+
+    <button
+        class="back-button"
+        onclick="go('home')"
+        aria-label="Zurück zur Startseite"
+    >
+        <span class="back-arrow">‹</span>
+        <span>STARTSEITE</span>
+    </button>
+
+
+    <div class="secret-title">
+
+        <h2>
+            Kleine Geheimnisse
+        </h2>
+
+        <p>
+            Nicht alles muss man
+            auf einmal wissen. ;)
+        </p>
+
+    </div>
+
+
+    <div class="envelopes">
+
+        <div
+            class="envelope"
+            onclick="message('Für die Tage, an denen du vergessen hast, wie besonders du bist: Du bist unglaublich. ❤️')"
+        >
+
+            <div class="mail">
+                ♥
+            </div>
+
+            <span>
+                Öffne mich,<br>
+                wenn du lächeln<br>
+                musst.
+            </span>
+
+        </div>
+
+
+        <div
+            class="envelope"
+            onclick="message('Egal wo wir sind oder was passiert: Ich bin immer für dich da. ❤️')"
+        >
+
+            <div class="mail">
+                ♥
+            </div>
+
+            <span>
+                Öffne mich,<br>
+                wenn du mich<br>
+                brauchst.
+            </span>
+
+        </div>
+
+
+        <div
+            class="envelope"
+            onclick="message('Heute wird gefeiert. Und zwar richtig. 🥂✨')"
+        >
+
+            <div class="mail">
+                ♥
+            </div>
+
+            <span>
+                Öffne mich,<br>
+                wenn heute<br>
+                gefeiert wird.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+VIDEO
+===================================================== -->
+
+<section
+    id="video"
+    class="page hidden"
+>
+
+    <button
+        class="back-button"
+        onclick="go('home')"
+        aria-label="Zurück zur Startseite"
+    >
+        <span class="back-arrow">‹</span>
+        <span>STARTSEITE</span>
+    </button>
+
+
+    <div class="video-title">
+
+        <h2>
+            Nur für dich.
+        </h2>
+
+        <p>
+            Und jetzt kommt noch etwas.
+        </p>
+
+    </div>
+
+
+    <div
+        class="video"
+        onclick="message('Hier kommt später euer persönliches Geburtstagsvideo hin. 🎬❤️')"
+    >
+
+        <div class="play">
+            ▶
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+FINAL
+===================================================== -->
+
+<section
+    id="final"
+    class="page hidden"
+>
+
+    <button
+        class="back-button"
+        onclick="go('home')"
+        aria-label="Zurück zur Startseite"
+    >
+        <span class="back-arrow">‹</span>
+        <span>STARTSEITE</span>
+    </button>
+
+
+    <div class="final-content">
+
+        <h2>
+            Auf die nächsten<br>
+            40 Jahre.
+        </h2>
+
+        <p>
+            Auf neue Abenteuer.<br>
+            Neue Geschichten.<br>
+            Und ganz viele neue Erinnerungen.
+        </p>
+
+        <div class="final-heart">
+            ♡
+        </div>
+
+        <div class="final-script">
+            Alles Liebe zum 40. Geburtstag.
+        </div>
+
+        <div class="final-small">
+            VON HERZEN · FÜR IMMER
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- =====================================================
+MEMORY LIGHTBOX
+===================================================== -->
+
+<div
+    class="memory-modal hidden"
+    id="memoryModal"
+>
+
+    <div class="memory-box">
+
+        <button
+            class="memory-close"
+            onclick="closeMemory()"
+            aria-label="Schließen"
+        >
+            ×
+        </button>
+
+        <div
+            class="memory-image"
+            id="memoryImage"
+        >
+            FOTO
+        </div>
+
+        <div
+            class="memory-year"
+            id="memoryYear"
+        ></div>
+
+        <h2
+            class="memory-title"
+            id="memoryTitle"
+        ></h2>
+
+        <p
+            class="memory-text"
+            id="memoryText"
+        ></p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+POPUP
+===================================================== -->
+
+<div
+    class="popup hidden"
+    id="popup"
+>
+
+    <div class="popup-box">
+
+        <h3>
+            Eine Nachricht für dich
+        </h3>
+
+        <p
+            id="popupText"
+        ></p>
+
+        <button
+            class="close"
+            onclick="closePopup()"
+        >
+            SCHLIESSEN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+❤️ SCHLOSS-TRANSITION
+===================================================== -->
+
+<div
+    id="unlockTransition"
+    class="unlock-transition"
+>
+
+    <div class="unlock-heart-lock">
+
+        <div class="unlock-shackle"></div>
+
+        <div class="unlock-heart">
+
+            <div class="unlock-keyhole"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="unlock-key">
+
+        <div class="unlock-key-ring"></div>
+
+        <div class="unlock-key-shaft"></div>
+
+        <div class="unlock-key-teeth">
+
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+    <div class="unlock-portal"></div>
+
+    <div class="unlock-light"></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:-35px;
+        --y1:-50px;
+        --x2:-90px;
+        --y2:-105px;
+        --x3:-150px;
+        --y3:-170px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:30px;
+        --y1:-40px;
+        --x2:75px;
+        --y2:-100px;
+        --x3:130px;
+        --y3:-160px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:-20px;
+        --y1:35px;
+        --x2:-80px;
+        --y2:75px;
+        --x3:-130px;
+        --y3:130px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:40px;
+        --y1:25px;
+        --x2:100px;
+        --y2:70px;
+        --x3:155px;
+        --y3:115px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:-60px;
+        --y1:-10px;
+        --x2:-125px;
+        --y2:-25px;
+        --x3:-190px;
+        --y3:-40px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:55px;
+        --y1:-15px;
+        --x2:120px;
+        --y2:-35px;
+        --x3:185px;
+        --y3:-70px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:-15px;
+        --y1:60px;
+        --x2:-45px;
+        --y2:120px;
+        --x3:-75px;
+        --y3:180px;
+        "
+    ></div>
+
+
+    <div
+        class="unlock-particle"
+        style="
+        --x1:20px;
+        --y1:55px;
+        --x2:55px;
+        --y2:110px;
+        --x3:90px;
+        --y3:175px;
+        "
+    ></div>
+
+</div>
+
+
+</div>
+</div>
+
+
+<script src="js/main.js"></script>
+
+
+</body>
+</html>
