@@ -43,19 +43,25 @@ PASSWORT SCREEN ÖFFNEN
 
 function openPassword() {
 
-    document
-        .getElementById("intro")
-        .classList.add("hidden");
+    const intro =
+        document.getElementById("intro");
 
-    document
-        .getElementById("passwordPage")
-        .classList.remove("hidden");
+    const passwordPage =
+        document.getElementById("passwordPage");
+
+    if (!intro || !passwordPage) return;
+
+    intro.classList.add("hidden");
+    passwordPage.classList.remove("hidden");
 
     setTimeout(() => {
 
-        document
-            .getElementById("pass")
-            .focus();
+        const pass =
+            document.getElementById("pass");
+
+        if (pass) {
+            pass.focus();
+        }
 
     }, 300);
 }
@@ -65,9 +71,12 @@ function openPassword() {
 ENTER-TASTE
 ===================================================== */
 
-document
-    .getElementById("pass")
-    .addEventListener(
+const passInput =
+    document.getElementById("pass");
+
+if (passInput) {
+
+    passInput.addEventListener(
         "keydown",
         function(e) {
 
@@ -80,6 +89,7 @@ document
 
         }
     );
+}
 
 
 /* =====================================================
@@ -96,7 +106,7 @@ let secretMode = false;
 
 
 /* =====================================================
-🔐 UNLOCK
+UNLOCK
 ===================================================== */
 
 let unlocking = false;
@@ -105,14 +115,16 @@ function unlock() {
 
     if (unlocking) return;
 
-    const pass =
-        document
-            .getElementById("pass")
-            .value;
+    const passElement =
+        document.getElementById("pass");
 
     const error =
-        document
-            .getElementById("error");
+        document.getElementById("error");
+
+    if (!passElement || !error) return;
+
+    const pass =
+        passElement.value;
 
 
     if (
@@ -123,13 +135,9 @@ function unlock() {
         error.textContent =
             "Hmm... das war noch nicht richtig. ♡";
 
-        const input =
-            document
-                .getElementById("pass");
+        passElement.value = "";
 
-        input.value = "";
-
-        input.animate(
+        passElement.animate(
             [
                 {
                     transform:
@@ -189,6 +197,16 @@ function unlock() {
         );
 
 
+    if (
+        !transition ||
+        !passwordPage ||
+        !home
+    ) {
+        unlocking = false;
+        return;
+    }
+
+
     passwordPage.classList.remove(
         "hidden"
     );
@@ -222,9 +240,12 @@ function unlock() {
             "hidden"
         );
 
-        document
-            .getElementById("app")
-            .scrollTop = 0;
+        const app =
+            document.getElementById("app");
+
+        if (app) {
+            app.scrollTop = 0;
+        }
 
         home.style.animation =
             "pageIn 1.4s cubic-bezier(.2,.8,.2,1)";
@@ -268,19 +289,23 @@ function unlock() {
 
 
 /* =====================================================
-🖼️ TIMELINE-BILDER AUTOMATISCH LADEN
+TIMELINE-BILDER
 ===================================================== */
 
 /*
-   Bilder kommen automatisch aus:
-   assets/images/timeline/
+    Bilder liegen hier:
 
-   Der Dateiname entspricht dabei exakt dem Titel der Timeline:
-   Geburt     -> Geburt.jpeg
-   Hochzeit   -> Hochzeit.jpg
-   etc.
+    assets/images/timeline/
 
-   Unterstützte Endungen: jpg, jpeg, png, webp
+    Normal:
+    Titel -> Bild
+
+    Geburt       -> Geburt.jpeg
+    Konfirmation -> Konfirmation.jpeg
+
+    2026 ist ein Sonderfall:
+    Titel ist "Dieses Jahr",
+    Bild heißt aber "2026.jpeg".
 */
 
 const TIMELINE_IMAGE_EXTENSIONS = [
@@ -290,97 +315,201 @@ const TIMELINE_IMAGE_EXTENSIONS = [
     "webp"
 ];
 
-function loadTimelineImage(container, title) {
 
-    if (!container || !title) return;
+function loadTimelineImage(
+    container,
+    fileName
+) {
 
-    const fileName = title.trim();
+    if (!container || !fileName) {
+        return;
+    }
+
+
+    container.textContent =
+        "FOTO";
+
+
     let extensionIndex = 0;
 
-    // Platzhalter erst einmal behalten, bis ein Bild wirklich geladen wurde.
-    container.textContent = "FOTO";
 
     function tryNextImage() {
 
-        if (extensionIndex >= TIMELINE_IMAGE_EXTENSIONS.length) {
+        if (
+            extensionIndex >=
+            TIMELINE_IMAGE_EXTENSIONS.length
+        ) {
+
             console.warn(
                 "Kein Timeline-Bild gefunden für:",
                 fileName
             );
+
             return;
         }
 
+
         const extension =
-            TIMELINE_IMAGE_EXTENSIONS[extensionIndex++];
+            TIMELINE_IMAGE_EXTENSIONS[
+                extensionIndex
+            ];
 
-        const image = new Image();
+        extensionIndex++;
 
-        image.alt = fileName;
-        image.className = "timeline-image";
-        image.decoding = "async";
 
-        image.onload = function() {
-            container.replaceChildren(image);
-        };
+        const image =
+            new Image();
 
-        image.onerror = function() {
-            tryNextImage();
-        };
 
-        /*
-           Wichtig: kein loading="lazy".
-           Die Timeline liegt beim Start auf display:none.
-           Lazy-Loading kann bei solchen versteckten Bereichen
-           dazu führen, dass das Bild erst gar nicht geladen wird.
-        */
+        image.alt =
+            fileName;
+
+        image.className =
+            "timeline-image";
+
+        image.decoding =
+            "async";
+
+
+        image.onload =
+            function() {
+
+                container.replaceChildren(
+                    image
+                );
+            };
+
+
+        image.onerror =
+            function() {
+
+                tryNextImage();
+            };
+
+
         image.src =
             "assets/images/timeline/" +
-            encodeURIComponent(fileName) +
+            encodeURIComponent(
+                fileName
+            ) +
             "." +
             extension;
     }
 
+
     tryNextImage();
 }
+
 
 function initTimelineImages() {
 
     const events =
-        document.querySelectorAll("#timeline .event");
-
-    events.forEach(event => {
-
-        const titleElement =
-            event.querySelector(".event-info h3");
-
-        const imageContainer =
-            event.querySelector(".event-img");
-
-        if (!titleElement || !imageContainer) return;
-
-        loadTimelineImage(
-            imageContainer,
-            titleElement.textContent
+        document.querySelectorAll(
+            "#timeline .event"
         );
-    });
+
+
+    events.forEach(
+        function(event) {
+
+            const titleElement =
+                event.querySelector(
+                    ".event-info h3"
+                );
+
+            const yearElement =
+                event.querySelector(
+                    ".event-info .year"
+                );
+
+            const imageContainer =
+                event.querySelector(
+                    ".event-img"
+                );
+
+
+            if (
+                !titleElement ||
+                !imageContainer
+            ) {
+                return;
+            }
+
+
+            const title =
+                titleElement
+                    .textContent
+                    .trim();
+
+
+            const year =
+                yearElement
+                    ? yearElement
+                        .textContent
+                        .trim()
+                    : "";
+
+
+            /*
+                WICHTIG:
+
+                2026 heißt sichtbar:
+                "Dieses Jahr"
+
+                Das Bild heißt aber:
+                "2026.jpeg"
+
+                Deshalb verwenden wir hier
+                ausdrücklich das Jahr.
+            */
+
+            let imageName;
+
+
+            if (year === "2026") {
+
+                imageName =
+                    "2026";
+
+            } else {
+
+                imageName =
+                    title;
+            }
+
+
+            loadTimelineImage(
+                imageContainer,
+                imageName
+            );
+        }
+    );
 }
 
+
 /*
-   Sicherstellen, dass das komplette HTML vorhanden ist,
-   bevor die Timeline-Bilder gesucht werden.
+    Erst laden, wenn das komplette
+    HTML vorhanden ist.
 */
-if (document.readyState === "loading") {
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
     document.addEventListener(
         "DOMContentLoaded",
         initTimelineImages
     );
+
 } else {
+
     initTimelineImages();
 }
 
 
 /* =====================================================
-⭐ TIMELINE MEMORY LIGHTBOX
+TIMELINE MEMORY LIGHTBOX
 ===================================================== */
 
 function openMemory(
@@ -416,6 +545,17 @@ function openMemory(
         );
 
 
+    if (
+        !modal ||
+        !yearElement ||
+        !titleElement ||
+        !textElement ||
+        !image
+    ) {
+        return;
+    }
+
+
     yearElement.textContent =
         year;
 
@@ -440,6 +580,7 @@ function openMemory(
 
     const img =
         image.querySelector("img");
+
 
     if (img) {
 
@@ -474,6 +615,8 @@ function closeMemory() {
             "memoryModal"
         );
 
+    if (!modal) return;
+
     modal.classList.add(
         "hidden"
     );
@@ -483,9 +626,15 @@ function closeMemory() {
 }
 
 
-document
-    .getElementById("memoryModal")
-    .addEventListener(
+const memoryModal =
+    document.getElementById(
+        "memoryModal"
+    );
+
+
+if (memoryModal) {
+
+    memoryModal.addEventListener(
         "click",
         function(e) {
 
@@ -499,7 +648,12 @@ document
 
         }
     );
+}
 
+
+/* =====================================================
+ESCAPE SCHLIESST MEMORY
+===================================================== */
 
 document.addEventListener(
     "keydown",
@@ -533,23 +687,29 @@ function go(id) {
     ];
 
 
-    pages.forEach(page => {
+    pages.forEach(
+        function(page) {
 
-        const element =
-            document.getElementById(page);
+            const element =
+                document.getElementById(
+                    page
+                );
 
-        if (element) {
+            if (element) {
 
-            element.classList.add(
-                "hidden"
-            );
+                element.classList.add(
+                    "hidden"
+                );
+            }
+
         }
-
-    });
+    );
 
 
     const target =
-        document.getElementById(id);
+        document.getElementById(
+            id
+        );
 
 
     if (target) {
@@ -558,11 +718,20 @@ function go(id) {
             "hidden"
         );
 
-        document
-            .getElementById("app")
-            .scrollTop = 0;
 
-        animatePage(target);
+        const app =
+            document.getElementById(
+                "app"
+            );
+
+        if (app) {
+            app.scrollTop = 0;
+        }
+
+
+        animatePage(
+            target
+        );
     }
 }
 
@@ -572,6 +741,8 @@ SEITEN-ANIMATION
 ===================================================== */
 
 function animatePage(page) {
+
+    if (!page) return;
 
     page.style.animation =
         "none";
@@ -589,33 +760,60 @@ POPUP
 
 function message(text) {
 
-    document
-        .getElementById("popupText")
-        .textContent = text;
-
-    document
-        .getElementById("popup")
-        .classList.remove(
-            "hidden"
+    const popupText =
+        document.getElementById(
+            "popupText"
         );
+
+    const popup =
+        document.getElementById(
+            "popup"
+        );
+
+
+    if (
+        !popupText ||
+        !popup
+    ) {
+        return;
+    }
+
+
+    popupText.textContent =
+        text;
+
+    popup.classList.remove(
+        "hidden"
+    );
 }
 
 
 function closePopup() {
 
-    document
-        .getElementById("popup")
-        .classList.add(
-            "hidden"
+    const popup =
+        document.getElementById(
+            "popup"
         );
+
+    if (!popup) return;
+
+    popup.classList.add(
+        "hidden"
+    );
 }
 
 
-document
-    .getElementById("popup")
-    .addEventListener(
+const popup =
+    document.getElementById(
+        "popup"
+    );
+
+
+if (popup) {
+
+    popup.addEventListener(
         "click",
-        e => {
+        function(e) {
 
             if (
                 e.target.id ===
@@ -627,6 +825,7 @@ document
 
         }
     );
+}
 
 
 /* =====================================================
@@ -659,10 +858,12 @@ function confetti() {
         c.className =
             "confetti";
 
+
         c.style.left =
             Math.random() *
             100 +
             "vw";
+
 
         c.style.background =
             colors[
@@ -672,23 +873,31 @@ function confetti() {
                 )
             ];
 
+
         c.style.animationDuration =
             2 +
             Math.random() * 3 +
             "s";
 
+
         c.style.animationDelay =
             Math.random() * .7 +
             "s";
 
-        document.body.appendChild(c);
+
+        document.body.appendChild(
+            c
+        );
 
 
-        setTimeout(() => {
+        setTimeout(
+            function() {
 
-            c.remove();
+                c.remove();
 
-        }, 5000);
+            },
+            5000
+        );
     }
 }
 
@@ -700,11 +909,17 @@ SWIPE AUF STARTSCREEN
 let touchStart = 0;
 
 
-document
-    .getElementById("app")
-    .addEventListener(
+const app =
+    document.getElementById(
+        "app"
+    );
+
+
+if (app) {
+
+    app.addEventListener(
         "touchstart",
-        e => {
+        function(e) {
 
             touchStart =
                 e.touches[0]
@@ -717,15 +932,14 @@ document
     );
 
 
-document
-    .getElementById("app")
-    .addEventListener(
+    app.addEventListener(
         "touchend",
-        e => {
+        function(e) {
 
             const touchEnd =
                 e.changedTouches[0]
                     .clientY;
+
 
             const diff =
                 touchStart -
@@ -740,17 +954,16 @@ document
 
 
             const intro =
-                document
-                    .getElementById(
-                        "intro"
-                    );
+                document.getElementById(
+                    "intro"
+                );
 
 
             if (
+                intro &&
                 !intro.classList.contains(
                     "hidden"
-                )
-                &&
+                ) &&
                 diff > 0
             ) {
 
@@ -762,6 +975,7 @@ document
             passive: true
         }
     );
+}
 
 
 /* =====================================================
@@ -787,7 +1001,8 @@ document.addEventListener(
         }
 
 
-        lastTouchEnd = now;
+        lastTouchEnd =
+            now;
 
     },
     {
